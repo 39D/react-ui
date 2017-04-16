@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import objectAssign from 'object-assign'
 import classnames from 'classnames'
 import _styles from '../styles/_popover.scss'

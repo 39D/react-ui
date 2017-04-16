@@ -1,4 +1,5 @@
-import React, { PropTypes, cloneElement } from 'react'
+import React, { cloneElement } from 'react'
+import PropTypes from 'prop-types'
 import { findDOMNode } from 'react-dom'
 import { addClass, removeClass } from './utils/dom'
 
