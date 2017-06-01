@@ -15,6 +15,7 @@ class Input extends Component {
     super(props)
 
     this.handleChange = this.handleChange.bind(this)
+    this.handleKeyPress = this.handleKeyPress.bind(this)
   }
 
   handleChange (event) {
@@ -26,6 +27,21 @@ class Input extends Component {
     }
 
     this.props.onChange(value)
+  }
+
+  handleKeyPress (event) {
+    const { type } = this.props
+
+    let value = event.target.value
+    if (value && (type === 'integer' || type === 'number')) {
+      if (!Regs[type].test(value)) return
+    }
+    if (event.key === 'Enter') {
+      this.props.onEnterPress(value)
+    }
+    if (this.props.onKeyPress) {
+      this.props.onKeyPress()
+    }
   }
 
   render () {
@@ -40,6 +56,7 @@ class Input extends Component {
       ),
       readOnly,
       onChange: readOnly ? undefined : this.handleChange,
+      onKeyPress: readOnly ? undefined : this.handleKeyPress,
       type: type === 'password' ? 'password' : 'text'
     }
 
@@ -53,6 +70,8 @@ Input.propTypes = {
   grid: PropTypes.grid,
   id: PropTypes.string,
   onChange: PropTypes.func,
+  onEnterPress: PropTypes.func,
+  onKeyPress: PropTypes.func,
   placeholder: PropTypes.string,
   readOnly: PropTypes.bool,
   rows: PropTypes.number,

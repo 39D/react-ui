@@ -97,6 +97,7 @@
 
   input:checked ~ .indicator {
     background-image: $custom-radio-checked-icon;
+    background-color: #0074d9;
   }
 }
 

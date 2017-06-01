@@ -10,14 +10,14 @@ function filter (args, keys) {
 export function filterInputProps () {
   return filter(
     [...arguments],
-    ['onValidate', 'dispatch', 'ignore', 'tip', 'validator', 'hasError', 'trigger', 'sep']
+    ['onValidate', 'dispatch', 'ignore', 'tip', 'validator', 'hasError', 'trigger', 'sep', 'onEnterPress']
   )
 }
 
 export function filterTextareaProps () {
   return filter(
     [...arguments],
-    ['onValidate', 'sep', 'hasError', 'trigger', 'tip', 'validator', 'hasError', 'trigger']
+    ['onValidate', 'sep', 'hasError', 'trigger', 'tip', 'validator', 'hasError', 'trigger', 'onEnterPress']
   )
 }
 

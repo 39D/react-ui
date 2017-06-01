@@ -46,13 +46,14 @@ class Dropdown extends Component {
   }
 
   renderButton (onClick) {
-    const { text, status, size } = this.props
+    const { text, status, size, disabled } = this.props
     if (!onClick) {
       return (
         <Button status={status}
           size={size}
           onClick={this.handleToggle}
-          className={_styles['dropdown-toggle']}>
+          className={_styles['dropdown-toggle']}
+          disabled={disabled}>
           {text}
         </Button>
       )
@@ -60,12 +61,14 @@ class Dropdown extends Component {
       return (
         <ButtonGroup size={size}>
           <Button status={status}
-            onClick={onClick}>
+            onClick={onClick}
+            disabled={disabled}>
             {text}
           </Button>
           <Button status={status}
             onClick={this.handleToggle}
-            className={classnames(_styles['dropdown-toggle'], _styles['dropdown-toggle-split'])} />
+            className={classnames(_styles['dropdown-toggle'], _styles['dropdown-toggle-split'])}
+            disabled={disabled} />
         </ButtonGroup>
       )
     }
@@ -99,6 +102,7 @@ class Dropdown extends Component {
 Dropdown.propTypes = objectAssign({
   children: PropTypes.array_element,
   className: PropTypes.string,
+  disabled: PropTypes.bool,
   data: PropTypes.array,
   onClick: PropTypes.func,
   right: PropTypes.bool,
